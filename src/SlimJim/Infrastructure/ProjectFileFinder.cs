@@ -45,6 +45,17 @@ namespace SlimJim.Infrastructure
 			FileInfo[] projects = directory
 									.GetFiles("*.csproj")
 									.Where(f => !PathIsIgnored(f.Name))
+
+                                  .Concat(
+                                  directory
+									.GetFiles("*.fsproj")
+									.Where(f => !PathIsIgnored(f.Name)))
+
+                                  //.Concat(
+                                  //directory
+                                  //  .GetFiles("*.vbproj")
+                                  //  .Where(f => !PathIsIgnored(f.Name)))
+
 									.ToArray();
 
 			if (projects.Length > 0)

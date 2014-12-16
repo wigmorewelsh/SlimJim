@@ -22,11 +22,17 @@ namespace SlimJim.Infrastructure
 
 			if (assemblyName == null) return null;
 
+            var guid = properties.Element(Ns + "ProjectGuid").ValueOrDefault();
+            if (!guid.StartsWith("{"))
+            {
+                guid = "{" + guid + "}";
+            }
+
 			return new CsProj
 			{
 				Path = csProjFile.FullName,
 				AssemblyName = assemblyName.Value,
-				Guid = properties.Element(Ns + "ProjectGuid").ValueOrDefault(),
+				Guid = guid, 
 				TargetFrameworkVersion = properties.Element(Ns + "TargetFrameworkVersion").ValueOrDefault(),
 				ReferencedAssemblyNames = ReadReferencedAssemblyNames(xml),
 				ReferencedProjectGuids = ReadReferencedProjectGuids(xml),
