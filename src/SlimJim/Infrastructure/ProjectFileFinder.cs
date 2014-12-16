@@ -51,10 +51,10 @@ namespace SlimJim.Infrastructure
 									.GetFiles("*.fsproj")
 									.Where(f => !PathIsIgnored(f.Name)))
 
-                                  //.Concat(
-                                  //directory
-                                  //  .GetFiles("*.vbproj")
-                                  //  .Where(f => !PathIsIgnored(f.Name)))
+                                  .Concat(
+                                  directory
+                                    .GetFiles("*.vbproj")
+                                    .Where(f => !PathIsIgnored(f.Name)))
 
 									.ToArray();
 
