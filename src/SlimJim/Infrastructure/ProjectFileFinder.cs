@@ -15,7 +15,7 @@ namespace SlimJim.Infrastructure
 		public ProjectFileFinder()
 		{
 			ignorePatterns = new List<Regex>();
-			IgnorePatterns(@"^\.svn$", @"^\.hg$", @"^\.git$", "^bin$", "^obj$", "ReSharper");
+			IgnorePatterns(@"^\.svn$", @"^\.hg$", @"^\.git$", "^bin$", "^obj$", "ReSharper", "node_modules");
 		}
 
 		public virtual List<FileInfo> FindAllProjectFiles(string startPath)
